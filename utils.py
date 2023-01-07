@@ -111,3 +111,5 @@ def get_post_by_pk(pk):
 # except:
 #     print(posts["content"])
 
+def test_ov(num):
+    return num * 10
