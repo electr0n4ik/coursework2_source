@@ -23,14 +23,19 @@ def search_page():
     """
     Поиск и вывод постов при обращении на GET /search/?s=...
     """
+    list_find_posts = []
     s = request.values.get("s").lower() # можно делать поиск через форму "найти" и через адресную строку
     if len(s) == 0 or s.isdigit(): # обработка пустого или с цифрой запроса
         return render_template("search_empty.html")
     else:
-        logging.info(f"Выполнен поиск по запросу {s}") # логирование при выполнении поиска
-        if type(find_post(s)) == list:
+        # logging.info(f"Выполнен поиск по запросу {s}") # логирование при выполнении поиска
+        for post in get_posts_all():
+            if s in post["content"]:
+                list_find_posts.append(post)
+        if list_find_posts:
             return render_template("post_list.html", s=s, posts=find_post(s))
         else:
+
             return find_post(s)
 
 if __name__ == "__main__":
