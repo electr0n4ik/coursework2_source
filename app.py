@@ -18,10 +18,20 @@ app.register_blueprint(main_blueprint)
 # Регистрируем второй блюпринт
 app.register_blueprint(post_show_blueprint)
 
-# @app.route('/search', methods=["POST"])
-# def search_page():
-#     s = request.form("s").lower()
-#     return render_template("post_list.html", s=s, posts=get_posts(s))
+@app.route('/search', methods=["GET", "POST"])
+def search_page():
+    """
+    Поиск и вывод постов при обращении на GET /search/?s=...
+    """
+    s = request.values.get("s").lower() # можно делать поиск через форму "найти" и через адресную строку
+    if len(s) == 0 or s.isdigit(): # обработка пустого или с цифрой запроса
+        return render_template("search_empty.html")
+    else:
+        logging.info(f"Выполнен поиск по запросу {s}") # логирование при выполнении поиска
+        if type(find_post(s)) == list:
+            return render_template("post_list.html", s=s, posts=find_post(s))
+        else:
+            return find_post(s)
 
 if __name__ == "__main__":
 	app.run()

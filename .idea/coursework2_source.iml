@@ -17,7 +17,6 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/main/templates" />
-        <option value="$MODULE_DIR$/show_post/templates" />
       </list>
     </option>
   </component>
