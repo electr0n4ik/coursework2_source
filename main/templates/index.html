@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKYPROGRAM</title>
+  <link href="./static/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="container header">
+    <div class="header__wrapper">
+      <a href="/static" class="header__logo-link">
+        <svg class="header__logo" width="177" height="26">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#skyprogram"></use>
+        </svg>
+      </a>
+      <a href="/templates/bookmarks.html" class="header__bookmark-btn">
+        <img src="./static/img/bookmark.png" alt="" class="header__bookmark-icon" width="28">
+        <span class="header__bookmark-counter">3</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="search">
+      <form action="/search" class="search__form">
+        <input type="search" class="search__input">
+      </form>
+    </div>
+
+    <section class="items">
+        {% for post in posts %}
+        <div class="items__item item">
+          <div class="item__top">
+            <a href="/templates/user-feed.html" class="item__head">
+                <div class="item__ava-wrap">
+                    <img src=post.poster_avatar alt="" class="item__ava" width="47">
+                </div>
+                <span class="item__username">{{ post.poster_name }}/span>
+            </a>
+          </div>
+          <a href="/templates2/post.html/post.html" class="item__post-link">
+              <img src="./static/img/post1.jpg" alt="" width="348" class="item__post-img">
+          </a>
+          <p class="item__descr">Текст описания коротки...</p>
+          <div class="item__post-info">
+              <div class="item__counter">
+                  <img src="./static/img/eye.png" alt="" class="item__counter-icon" width="26">
+              <span class="item__counter-text">212</span>
+              </div>
+          </div>
+          <div class="item__post-bottom">
+              <a href="/templates/post.html/post.html" class="item__btn-more">Подробнее</a>
+              <button type="button" class="item__bookmark-btn">
+                  <img src="./static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+              </button>
+          </div>
+        </div>
+        {% endfor %}
+
+    </section>
+  </main>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="skyprogram" viewbox="0 0 177 26" fill="none" width="177" height="26">
+      <path d="M1.024 6.952c0 3.264 1.44 5.184 3.52 6.752l2.56 1.952c1.664 1.28 2.624 2.016 2.624 3.648 0 1.152-.704 1.856-1.888 1.856-1.152 0-1.92-.896-1.92-2.304V17H.8v2.08c0 4.128 3.168 6.4 7.04 6.4s7.04-2.24 7.04-6.816c0-3.104-1.536-5.056-3.584-6.592L8.64 10.024C7.072 8.84 6.144 8.136 6.144 6.568c0-1.12.704-1.728 1.664-1.728 1.056 0 1.728.704 1.728 2.176V8.68h5.024V6.92c0-4.32-2.976-6.4-6.752-6.4-3.712 0-6.784 1.824-6.784 6.432ZM22.507 1h-5.376v24h5.376V13.544L26.411 25h5.952l-4.96-12.736L32.14 1h-5.664l-3.968 11.424V1Zm20.268 24v-7.84L47.735 1h-5.184l-2.496 9.76L37.559 1h-5.184l4.96 16.16V25h5.44Zm11.855 0v-8.48h2.208c4.416 0 7.232-2.528 7.232-7.2V8.04c0-4.608-2.816-7.04-7.232-7.04H49.35v24h5.28Zm1.952-19.52c1.536 0 2.432.768 2.432 2.88V9c0 2.176-.896 3.04-2.432 3.04H54.63V5.48h1.952ZM71.695 25V13.192L76.015 25h5.984l-4.64-11.104c2.432-.832 4.032-2.752 4.032-5.728V7.24c0-4.064-2.976-6.24-7.072-6.24h-8v24h5.376Zm1.888-19.52c1.504 0 2.432.704 2.432 2.688v.448c0 2.144-.928 3.008-2.432 3.008h-1.888V5.48h1.888Zm17.85 20c4.863 0 7.84-2.752 7.84-8.32V8.84c0-5.568-2.977-8.32-7.84-8.32-4.865 0-7.84 2.752-7.84 8.32v8.32c0 5.568 2.975 8.32 7.84 8.32Zm0-4.64c-1.505 0-2.4-.864-2.4-3.52V8.68c0-2.656.927-3.52 2.4-3.52 1.503 0 2.4.864 2.4 3.52v8.64c0 2.656-.897 3.52-2.4 3.52Zm17.066 4.64c2.272 0 4.032-.928 5.056-2.848V25h3.968V12.04h-8.16v4.32h2.72v1.12c0 2.464-.928 3.36-2.4 3.36-1.504 0-2.4-.896-2.4-3.52V8.68c0-2.656.928-3.52 2.4-3.52 1.504 0 2.4.864 2.4 3.52v1.344h5.44V8.84c0-5.568-2.976-8.32-7.84-8.32s-7.84 2.752-7.84 8.32v8.32c0 5.568 2.56 8.32 6.656 8.32Zm17.446-.48V13.192L130.265 25h5.984l-4.64-11.104c2.432-.832 4.032-2.752 4.032-5.728V7.24c0-4.064-2.976-6.24-7.072-6.24h-8v24h5.376Zm1.888-19.52c1.504 0 2.432.704 2.432 2.688v.448c0 2.144-.928 3.008-2.432 3.008h-1.888V5.48h1.888ZM140.499 1l-3.776 24h5.216l.576-4.32h4.416l.576 4.32h5.215l-3.775-24h-8.448Zm2.624 15.2 1.6-11.68 1.6 11.68h-3.2Zm24.92 8.8 3.392-21.024V25h4.8V1h-8.512l-2.368 18.08L162.923 1h-8.448v24h4.64V3.944L162.539 25h5.504Z" fill="#000" fill-opacity=".8" />
+    </symbol>
+  </svg>
+</body>
+
+</html>

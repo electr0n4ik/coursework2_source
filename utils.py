@@ -13,8 +13,8 @@ def get_posts_all():
     `pk` — id или номер поста.
     """
     import json
-
-    with open("data/posts.json", encoding="utf-8") as file:
+    path_file = "D:\Python\Projects\coursework2_source\data\posts.json" # указал полный путь к файлу, для работы pytest
+    with open(path_file, encoding="utf-8") as file:
         posts = json.load(file)
     return posts
 
@@ -51,7 +51,7 @@ def get_comments_by_post_id(post_id):
     """
     import json
 
-    with open("data/comments.json", encoding="utf-8") as file:
+    with open("D:\Python\Projects\coursework2_source\data\comments.json", encoding="utf-8") as file:
         comments = json.load(file)
 
     list_comments = []
@@ -77,7 +77,7 @@ def search_for_posts(query):
     """
     list_posts = []
     for post in get_posts_all():
-        if query.lower() in post["content"].lower():
+        if str(query.lower()) in post["content"].lower():
             list_posts.append(post)
 
     if len(query) == 0 or len(list_posts) == 0:
@@ -102,14 +102,3 @@ def get_post_by_pk(pk):
     if flag:
         return "Пост не найден!"
 
-
-# posts = get_post_by_pk(1)
-# try:
-#     for post in posts:
-#         print(post["content"])#, end="")
-#         print()
-# except:
-#     print(posts["content"])
-
-def test_ov(num):
-    return num * 10
