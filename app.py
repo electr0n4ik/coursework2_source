@@ -3,7 +3,7 @@ from utils import *
 
 # Импортируем блюпринты из их пакетов
 from main.main_page import main_blueprint
-# from loader.loader import loader_blueprint
+from post_show.post_show import post_show_blueprint
 
 
 # POST_PATH = "posts.json"
@@ -16,7 +16,7 @@ app = Flask(__name__)
 # Регистрируем первый блюпринт
 app.register_blueprint(main_blueprint)
 # Регистрируем второй блюпринт
-# app.register_blueprint(loader_blueprint)
+app.register_blueprint(post_show_blueprint)
 
 # @app.route('/search', methods=["POST"])
 # def search_page():

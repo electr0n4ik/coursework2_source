@@ -37,23 +37,23 @@
           <div class="item__top">
             <a href="/templates/user-feed.html" class="item__head">
                 <div class="item__ava-wrap">
-                    <img src=post.poster_avatar alt="" class="item__ava" width="47">
+                    <img src={{ post.poster_avatar }} alt="" class="item__ava" width="47">
                 </div>
-                <span class="item__username">{{ post.poster_name }}/span>
+                <span class="item__username">{{ post.poster_name }}</span>
             </a>
           </div>
-          <a href="/templates2/post.html/post.html" class="item__post-link">
-              <img src="./static/img/post1.jpg" alt="" width="348" class="item__post-img">
+          <a href="/post/{{ post.pk }}" class="item__post-link">
+              <img src={{ post.pic }} alt="" width="348" class="item__post-img">
           </a>
-          <p class="item__descr">Текст описания коротки...</p>
+          <p class="item__descr">{{ post.content }}</p>
           <div class="item__post-info">
               <div class="item__counter">
                   <img src="./static/img/eye.png" alt="" class="item__counter-icon" width="26">
-              <span class="item__counter-text">212</span>
+              <span class="item__counter-text">{{ post.views_count }}</span>
               </div>
           </div>
           <div class="item__post-bottom">
-              <a href="/templates/post.html/post.html" class="item__btn-more">Подробнее</a>
+              <a href="/post/{{ post.pk }}" class="item__btn-more">Подробнее</a>
               <button type="button" class="item__bookmark-btn">
                   <img src="./static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
               </button>
