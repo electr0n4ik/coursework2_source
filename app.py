@@ -18,7 +18,7 @@ app.register_blueprint(main_blueprint)
 # Регистрируем второй блюпринт
 app.register_blueprint(post_show_blueprint)
 
-@app.route('/search', methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
 def search_page():
     """
     Поиск и вывод постов при обращении на GET /search/?s=...
@@ -31,7 +31,14 @@ def search_page():
         return render_template("search_empty.html")
     else:
         # logging.info(f"Выполнен поиск по запросу {s}") # логирование при выполнении поиска
+
         return render_template("search.html", s=s, posts=search_for_posts(s), amount_posts=len(search_for_posts(s)))
+
+
+@app.route("/users/<username>")
+def user_page(username):
+
+    return render_template("user_feed.html", posts=get_posts_by_user(username))
 
 
 if __name__ == "__main__":

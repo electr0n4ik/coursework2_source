@@ -11,14 +11,14 @@
 <body>
   <header class="container header">
     <div class="header__wrapper">
-      <a href="/static" class="header__logo-link">
+      <a href="/" class="header__logo-link">
         <svg class="header__logo" width="177" height="26">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#skyprogram"></use>
         </svg>
       </a>
       <a href="/templates/bookmarks.html" class="header__bookmark-btn">
         <img src="./static/img/bookmark.png" alt="" class="header__bookmark-icon" width="28">
-        <span class="header__bookmark-counter">3</span>
+        <span class="header__bookmark-counter">3000</span>
       </a>
     </div>
   </header>
@@ -35,7 +35,7 @@
         {% for post in posts %}
         <div class="items__item item">
           <div class="item__top">
-            <a href="/templates/user-feed.html" class="item__head">
+            <a href="/users/{{ post.poster_name }}" class="item__head">
                 <div class="item__ava-wrap">
                     <img src={{ post.poster_avatar }} alt="" class="item__ava" width="47">
                 </div>

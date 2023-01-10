@@ -14,5 +14,4 @@ def main_page():
     """
     Обработка запроса при обращении к /
     """
-
     return render_template("index.html", posts=get_posts_all())
