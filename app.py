@@ -23,7 +23,6 @@ def search_page():
     """
     Поиск и вывод постов при обращении на GET /search/?s=...
     """
-
     list_find_posts = []
     s = request.values.get("s") # можно делать поиск через форму "найти" и через адресную строку
 
@@ -37,7 +36,9 @@ def search_page():
 
 @app.route("/users/<username>")
 def user_page(username):
-
+    """
+    Вывод постов конкретного пользователя GET /users/<username>
+    """
     return render_template("user_feed.html", posts=get_posts_by_user(username))
 
 
