@@ -1,16 +1,11 @@
-import pytest
-from app import *
+class TestMain:
 
-def test_app_pain():
+    def test_root_status(self, test_client):
+        """ Проверяем, получается ли нужный статус-код и """
+        response = test_client.get('/', follow_redirects=True)
+        assert response.status_code == 200, "Статус-код всех постов неверный"
 
-    response = app.test_client().get('/pain')
-    assert response.status_code == 404
-    assert response.data == render_template("index.html", posts=get_posts_all())
+    def test_root_content(self, test_client):
+        response = test_client.get('/', follow_redirects=True)
+        assert "Это главная страничка" in response.data.decode("utf-8"), "Контент страницы неверный"
 
-
-def test_get_post_by_pk():
-    """
-    ТЕСТ: Запрос к несуществующей странице /pain и вернуть статус-код 404
-    """
-    with pytest.pytest.raises():
-        divide(True, None)
