@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKYPROGRAM search</title>
+  <link href="./static/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="container header">
+    <div class="header__wrapper">
+      <a href="/" class="header__btn-back">
+        <svg class="header__btn-icon" width="19" height="16">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
+        </svg>
+      </a>
+      <a href="/" class="header__logo-link">
+        <svg class="header__logo" width="100" height="26">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+        </svg>
+      </a>
+    </div>
+  </header>
+  <main class="container">
+    <div class="search">
+      <form action="/search" class="search__form" method="post">
+        <input type="text" class="search__input" name="s">
+      </form>
+      <p class="search__results">Постов найдено: {{ amount_posts }}</p>
+    </div>
+
+    <section class="items">
+        {% for post in posts %}
+          <div class="items__item item">
+            <div class="item__top">
+              <a href="./templates_app/user-feed.html" class="item__head">
+                <div class="item__ava-wrap">
+                  <img src={{ post.poster_avatar }} alt="" class="item__ava" width="47">
+                </div>
+                <span class="item__username">{{ post.poster_name }}</span>
+              </a>
+            </div>
+            <a href="/templates/post.html" class="item__post-link">
+              <img src={{ post.pic }} alt="" width="348" class="item__post-img">
+            </a>
+            <p class="item__descr"><a href="/templates/tag.htmls" class="item__tag">#food</a>{{ post.content }}</p>
+            <div class="item__post-info">
+              <div class="item__counter">
+                <img src="./static/img/eye.png" alt="" class="item__counter-icon" width="26">
+                <span class="item__counter-text">{{ post.views_count }}</span>
+              </div>
+            </div>
+            <div class="item__post-bottom">
+              <a href="/post/{{ post.pk }}" class="item__btn-more">Подробнее</a>
+              <button type="button" class="item__bookmark-btn">
+                <img src="./static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+    </section>
+  </main>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="back" viewbox="0 0 19 16" fill="none" width="19" height="16">
+      <path d="m17.34 6.19.028.006H5.074L8.94 2.322c.19-.189.293-.445.293-.714 0-.269-.104-.523-.293-.713L8.338.294A.997.997 0 0 0 7.628 0a.997.997 0 0 0-.71.293L.293 6.917A.995.995 0 0 0 0 7.63c0 .27.103.524.293.713l6.625 6.625c.189.189.441.293.71.293.269 0 .52-.104.71-.293l.601-.602a.995.995 0 0 0 .293-.71.965.965 0 0 0-.293-.696L5.031 9.064h12.322c.554 0 1.02-.477 1.02-1.03v-.851c0-.554-.48-.994-1.033-.994Z" fill="#000" />
+    </symbol>
+    <symbol id="search" viewbox="0 0 100 26" fill="none" width="100" height="26">
+      <path d="M1.024 6.952c0 3.264 1.44 5.184 3.52 6.752l2.56 1.952c1.664 1.28 2.624 2.016 2.624 3.648 0 1.152-.704 1.856-1.888 1.856-1.152 0-1.92-.896-1.92-2.304V17H.8v2.08c0 4.128 3.168 6.4 7.04 6.4s7.04-2.24 7.04-6.816c0-3.104-1.536-5.056-3.584-6.592L8.64 10.024C7.072 8.84 6.144 8.136 6.144 6.568c0-1.12.704-1.728 1.664-1.728 1.056 0 1.728.704 1.728 2.176V8.68h5.024V6.92c0-4.32-2.976-6.4-6.752-6.4-3.712 0-6.784 1.824-6.784 6.432ZM29.099 20.36h-6.592v-5.28h5.952v-4.64h-5.952v-4.8H29.1V1H17.131v24H29.1v-4.64ZM34 1l-3.777 24h5.216l.576-4.32h4.416l.577 4.32h5.215L42.447 1H34Zm2.623 15.2 1.6-11.68 1.6 11.68h-3.2ZM53.352 25V13.192L57.671 25h5.984l-4.64-11.104c2.432-.832 4.032-2.752 4.032-5.728V7.24c0-4.064-2.976-6.24-7.072-6.24h-8v24h5.376Zm1.888-19.52c1.504 0 2.432.704 2.432 2.688v.448c0 2.144-.928 3.008-2.432 3.008h-1.888V5.48h1.888Zm20.25 9.28v2.56c0 2.624-.896 3.52-2.4 3.52s-2.4-.896-2.4-3.52V8.68c0-2.656.928-3.52 2.4-3.52 1.504 0 2.4.864 2.4 3.52v2.24h5.44V8.84c0-5.568-2.976-8.32-7.84-8.32s-7.84 2.752-7.84 8.32v8.32c0 5.568 2.976 8.32 7.84 8.32s7.84-2.752 7.84-8.32v-2.4h-5.44ZM89.259 25v-9.984h4.8V25h5.44V1h-5.44v9.344h-4.8V1h-5.44v24h5.44Z" fill="#000" fill-opacity=".8" />
+    </symbol>
+  </svg>
+</body>
+
+</html>

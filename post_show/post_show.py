@@ -19,9 +19,12 @@ def post_show_page(post_id):
         if int(post_id) == post["pk"]:
             get_post = post
             len_content_post = len(post["content"])
+    comments = []
+    amount_comments = 0
+    if len(get_comments_by_post_id(post_id)) > 0:
+        comments = get_comments_by_post_id(post_id)
+        amount_comments = len(get_comments_by_post_id(post_id))
 
-    comments = get_comments_by_post_id(post_id)
-    amount_comments = len(get_comments_by_post_id(post_id))
 
     return render_template("post.html", post=get_post, comments=comments, amount_comments=amount_comments, len_content_post=len_content_post)
 

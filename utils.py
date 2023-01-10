@@ -65,7 +65,7 @@ def get_comments_by_post_id(post_id):
         if len(list_comments) > 0:
             return list_comments  # 1
         elif flag:
-            return ValueError("Поста не существует")  # 2
+            raise ValueError("Поста не существует")  # 2
     except:
         return list_comments  # 3
 
