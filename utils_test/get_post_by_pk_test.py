@@ -7,5 +7,5 @@ def test_get_post_by_pk(post_pk_test, expected):
     """
     ТЕСТ: Возвращает один пост по его идентификатору.
     """
-    assert get_post_by_pk(post_pk_test) == expected, f"Ошибка для ->{post_pk_test}"
+    assert get_post_by_pk(post_pk_test) == expected, f"Ошибка для ->{post_pk_test}" # .data.decode("utf-8")
 

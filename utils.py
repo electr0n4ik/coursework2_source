@@ -93,12 +93,15 @@ def get_post_by_pk(pk):
     """
     post = []
     flag = 0
-    for post in get_posts_all():
-        if int(pk) == post["pk"]:
-            return post
-        else:
-            flag = 1
+    if str(pk).isdigit():
+        for post in get_posts_all():
+            if int(pk) == post["pk"]:
+                return post
+            else:
+                flag = 1
 
-    if flag:
+        if flag:
+            return "Пост не найден!"
+
+    else:
         return "Пост не найден!"
-
