@@ -70,8 +70,12 @@ def one_post_in_json(post_id):
     return jsonify(get_post_by_pk(post_id))
 
 
-response = app.test_client().get("/api/posts/1")
-print(type(response.json) == dict)
+@app.route("/tag/<tagname>")
+def tags_page(tagname):
+    posts = get_posts_all()
+
+    return render_template("tag.html", tagname=tagname, posts=posts)
+
 
 if __name__ == "__main__":
     app.run()

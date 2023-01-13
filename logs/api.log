@@ -181,3 +181,19 @@
 2023-01-13 17:09:16,892 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 2023-01-13 17:09:16,892 [INFO] [33mPress CTRL+C to quit[0m
+2023-01-13 17:22:30,456 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-01-13 17:22:30,456 [INFO] [33mPress CTRL+C to quit[0m
+2023-01-13 17:22:35,799 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:35] "GET / HTTP/1.1" 200 -
+2023-01-13 17:22:36,154 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:36] "[36mGET /static/img/bookmark.png HTTP/1.1[0m" 304 -
+2023-01-13 17:22:36,169 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:36] "[36mGET /static/css/styles.min.css HTTP/1.1[0m" 304 -
+2023-01-13 17:22:36,181 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:36] "[36mGET /static/img/eye.png HTTP/1.1[0m" 304 -
+2023-01-13 17:22:54,627 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /tag/food HTTP/1.1" 200 -
+2023-01-13 17:22:54,647 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "[36mGET /static/css/styles.min.css HTTP/1.1[0m" 304 -
+2023-01-13 17:22:54,648 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /static/img/ava1.png HTTP/1.1" 200 -
+2023-01-13 17:22:54,667 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "[36mGET /static/img/bookmark.png HTTP/1.1[0m" 304 -
+2023-01-13 17:22:54,667 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "[36mGET /static/img/eye.png HTTP/1.1[0m" 304 -
+2023-01-13 17:22:54,668 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /static/img/post4.jpg HTTP/1.1" 200 -
+2023-01-13 17:22:54,668 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /static/img/post2.jpg HTTP/1.1" 200 -
+2023-01-13 17:22:54,668 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /static/img/ava2.png HTTP/1.1" 200 -
+2023-01-13 17:22:54,692 [INFO] 127.0.0.1 - - [13/Jan/2023 17:22:54] "GET /static/img/post3.jpg HTTP/1.1" 200 -

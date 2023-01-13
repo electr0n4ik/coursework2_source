@@ -11,16 +11,17 @@
 <body>
   <header class="container header">
     <div class="header__wrapper">
-      <a href="/static" class="header__btn-back">
+      <a href="/" class="header__btn-back">
         <svg class="header__btn-icon" width="19" height="16">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
         </svg>
       </a>
       <a href="#" class="header__nosvg">
-        ТЭГ / ЕДА
+          <p>{{ tagname }}</p>
       </a>
     </div>
   </header>
+  {% for post in posts %}
   <main class="container">
     <section class="items">
       <div class="items__item item">
@@ -35,7 +36,7 @@
         <a href="/templates_app/post.html/post.html" class="item__post-link">
           <img src="../static/img/post4.jpg" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr"><a href="/templates_app/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
+        <p class="item__descr"><a href="/post_show/templates/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
@@ -61,7 +62,7 @@
         <a href="/templates_app/post.html/post.html" class="item__post-link">
           <img src="../static/img/post2.jpg" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr"><a href="/templates_app/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
+        <p class="item__descr"><a href="/post_show/templates/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
@@ -87,7 +88,7 @@
         <a href="/templates_app/post.html/post.html" class="item__post-link">
           <img src="../static/img/post3.jpg" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr"><a href="/templates_app/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
+        <p class="item__descr"><a href="/post_show/templates/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
@@ -103,6 +104,7 @@
       </div>
     </section>
   </main>
+  {% endfor %}
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="back" viewbox="0 0 19 16" fill="none" width="19" height="16">
       <path d="m17.34 6.19.028.006H5.074L8.94 2.322c.19-.189.293-.445.293-.714 0-.269-.104-.523-.293-.713L8.338.294A.997.997 0 0 0 7.628 0a.997.997 0 0 0-.71.293L.293 6.917A.995.995 0 0 0 0 7.63c0 .27.103.524.293.713l6.625 6.625c.189.189.441.293.71.293.269 0 .52-.104.71-.293l.601-.602a.995.995 0 0 0 .293-.71.965.965 0 0 0-.293-.696L5.031 9.064h12.322c.554 0 1.02-.477 1.02-1.03v-.851c0-.554-.48-.994-1.033-.994Z" fill="#000" />
