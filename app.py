@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from utils import *
+import logging
 
 # Импортируем блюпринты из их пакетов
 from main.main_page import main_blueprint
@@ -14,6 +15,9 @@ app.register_blueprint(main_blueprint)
 # Регистрируем блюпринт с обработкой запроса при обращении к GET /post
 app.register_blueprint(post_show_blueprint)
 
+logging.basicConfig(filename="D:\Python\Projects\coursework2_source\logs/api.log",
+                    level=logging.INFO,
+                    format="%(asctime)s [%(levelname)s] %(message)s", encoding="utf-8")
 
 @app.route("/search", methods=["GET", "POST"])
 def search_page():
@@ -29,7 +33,6 @@ def search_page():
         s_list = s.split()
         for symbol in s_list:
             if symbol.isalpha():
-                # logging.info(f"Выполнен поиск по запросу {s}") # логирование при выполнении поиска
                 return render_template("search.html", s=s, posts=search_for_posts(s),
                                        amount_posts=len(search_for_posts(s)))
             else:
@@ -56,11 +59,13 @@ def internal_server_error(error):
 
 @app.route("/api/posts")
 def posts_in_json():
+    logging.info("Запрос /api/posts")
     return jsonify(get_posts_all())
 
 
 @app.route("/api/posts/<post_id>")
 def one_post_in_json(post_id):
+    logging.info(f"Запрос /api/posts/{post_id}")
     return jsonify(get_post_by_pk(post_id))
 
 

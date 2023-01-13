@@ -1,0 +1,5 @@
+2023-01-13 15:35:35,454 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-01-13 15:35:35,454 [INFO] [33mPress CTRL+C to quit[0m
+2023-01-13 15:35:37,212 [INFO] Запрос /api/posts/3
+2023-01-13 15:35:37,213 [INFO] 127.0.0.1 - - [13/Jan/2023 15:35:37] "GET /api/posts/3 HTTP/1.1" 200 -
