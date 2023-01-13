@@ -5,17 +5,13 @@ from utils import *
 from main.main_page import main_blueprint
 from post_show.post_show import post_show_blueprint
 
-
-# POST_PATH = "posts.json"
-# UPLOAD_FOLDER = "uploads/images"
-
 app = Flask(__name__)
 # Чтобы заработала кириллица
 app.config['JSON_AS_ASCII'] = False
 
-# Регистрируем первый блюпринт
+# Регистрируем блюпринт главной страницы GET /
 app.register_blueprint(main_blueprint)
-# Регистрируем второй блюпринт
+# Регистрируем блюпринт с обработкой запроса при обращении к GET /post
 app.register_blueprint(post_show_blueprint)
 
 @app.route("/search", methods=["GET", "POST"])
@@ -45,14 +41,13 @@ def user_page(username):
     return render_template("user_feed.html", posts=get_posts_by_user(username))
 
 
-
 @app.errorhandler(404)
 def error_404(error):
     return render_template("404.html"), 404
 
 
 @app.errorhandler(500)
-def error_500(error):
+def internal_server_error(error):
     return render_template("500.html"), 500
 
 
