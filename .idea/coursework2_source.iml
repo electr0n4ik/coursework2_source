@@ -18,6 +18,7 @@
       <list>
         <option value="$MODULE_DIR$/main/templates" />
         <option value="$MODULE_DIR$/post_show/templates" />
+        <option value="$MODULE_DIR$/errors_404_500/templates" />
       </list>
     </option>
   </component>
