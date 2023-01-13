@@ -19,6 +19,7 @@ logging.basicConfig(filename="D:\Python\Projects\coursework2_source\logs/api.log
                     level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(message)s", encoding="utf-8")
 
+
 @app.route("/search", methods=["GET", "POST"])
 def search_page():
     """
@@ -68,6 +69,9 @@ def one_post_in_json(post_id):
     logging.info(f"Запрос /api/posts/{post_id}")
     return jsonify(get_post_by_pk(post_id))
 
+
+response = app.test_client().get("/api/posts/1")
+print(type(response.json) == dict)
 
 if __name__ == "__main__":
     app.run()
