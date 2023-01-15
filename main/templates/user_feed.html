@@ -35,10 +35,10 @@
                 <span class="item__username">{{ post.poster_name }}</span>
               </a>
             </div>
-            <a href="/post/{{ post.pk }}" class="item__post-link">
+            <a href="/users/{{ post.poster_name }}" class="item__post-link">
               <img src={{ post.pic }} alt="" width="348" class="item__post-img">
             </a>
-            <p class="item__descr"><a href="#" class="item__tag">#food</a> {{ post.content }}</p>
+            <p>{{ post.content }}</p>
             <div class="item__post-info">
               <div class="item__counter">
                 <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">

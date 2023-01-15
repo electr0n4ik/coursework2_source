@@ -15,9 +15,9 @@ app.register_blueprint(main_blueprint)
 # Регистрируем блюпринт с обработкой запроса при обращении к GET /post
 app.register_blueprint(post_show_blueprint)
 
-logging.basicConfig(filename="D:\Python\Projects\coursework2_source\logs/api.log",
-                    level=logging.INFO,
-                    format="%(asctime)s [%(levelname)s] %(message)s", encoding="utf-8")
+# logging.basicConfig(filename="D:\Python\Projects\coursework2_source\logs/api.log",
+#                     level=logging.INFO,
+#                     format="%(asctime)s [%(levelname)s] %(message)s", encoding="utf-8")
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -72,8 +72,12 @@ def one_post_in_json(post_id):
 
 @app.route("/tag/<tagname>")
 def tags_page(tagname):
-    posts = get_posts_all()
+    posts = get_posts_by_tag(tagname) # все посты с тегом tagname
 
+    # for post in posts:
+    #     if tagname == word:
+
+    #return f"tagname={tagname} posts= {posts}"
     return render_template("tag.html", tagname=tagname, posts=posts)
 
 

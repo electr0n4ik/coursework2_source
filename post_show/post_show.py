@@ -14,7 +14,7 @@ def post_show_page(post_id):
     Обработка запроса при обращении к GET /post
     """
     post = get_post_by_pk(post_id)
-
+    post_content = []
     len_content_post = len(post["content"])
 
     comments = []
@@ -23,4 +23,7 @@ def post_show_page(post_id):
         comments = get_comments_by_post_id(post_id)
         amount_comments = len(get_comments_by_post_id(post_id))
 
-    return render_template("post.html", post=post, comments=comments, amount_comments=amount_comments, len_content_post=len_content_post)
+    return render_template("post.html", post=post,
+                           comments=comments,
+                           amount_comments=amount_comments,
+                           len_content_post=len_content_post)

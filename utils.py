@@ -13,7 +13,7 @@ def get_posts_all():
     `pk` — id или номер поста.
     """
     import json
-    path_file = "D:\Python\Projects\coursework2_source\data\posts.json" # указал полный путь к файлу, для работы pytest
+    path_file = "./data/posts.json" # указал полный путь к файлу, для работы pytest
     with open(path_file, encoding="utf-8") as file:
         posts = json.load(file)
     return posts
@@ -51,7 +51,7 @@ def get_comments_by_post_id(post_id):
     """
     import json
 
-    with open("D:\Python\Projects\coursework2_source\data\comments.json", encoding="utf-8") as file:
+    with open("./data/comments.json", encoding="utf-8") as file:
         comments = json.load(file)
 
     list_comments = []
@@ -105,3 +105,19 @@ def get_post_by_pk(pk):
 
     else:
         return "Пост не найден!"
+
+
+def get_posts_by_tag(tag):
+    posts = get_posts_all()
+    posts_content = []
+
+    for post in posts:
+        if "#" in post["content"]:
+            words = post["content"].split(" ")
+            for word in words:
+                if word[0] == "#" and word[1:] == tag:
+                    posts_content.append(post)
+
+            words = []
+
+    return posts_content

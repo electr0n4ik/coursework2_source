@@ -1,5 +1,5 @@
 # main page show
-from utils import get_posts_all
+from utils import get_posts_all, get_posts_by_tag
 from flask import Blueprint, render_template
 
 # Создаем блюпринт главной страницы
