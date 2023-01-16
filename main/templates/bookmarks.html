@@ -43,15 +43,15 @@
             <div class="item__post-info">
               <div class="item__counter">
                 <img src="/../static/img/eye.png" alt="" class="item__counter-icon" width="26">
-                <span class="item__counter-text">212</span>
+                <span class="item__counter-text">{{ post.views_count }}</span>
               </div>
             </div>
             <div class="item__post-bottom">
               <a href="/post/{{ post.pk }}" class="item__btn-more">Подробнее</a>
-              <button type="button" class="item__bookmark-btn">
-                <img src="/../static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
-              </button>
-            </div>
+                  <a href="/bookmarks/add/{{ post.pk }}" type="button" class="item__bookmark-btn">
+                    <img src="./static/img/bookmark.png" alt="" class="item__bookmark-icon" width="22">
+                  </a>
+          </div>
           </div>
         </section>
       {% endfor %}

@@ -1,6 +1,6 @@
 # main page show
 from utils import get_posts_all
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, jsonify
 import json
 
 # Создаем блюпринт главной страницы
@@ -16,6 +16,6 @@ def main_page():
     Обработка запроса при обращении к /
     """
     with open("./data/bookmarks.json", encoding="utf-8") as file:
-        amount_bookmarks = len(json.load(file))
+        bookmarks = json.load(file)
 
-    return render_template("index.html", posts=get_posts_all(), amount_bookmarks=amount_bookmarks)
+    return render_template("index.html", posts=get_posts_all(), amount_bookmarks=len(bookmarks))

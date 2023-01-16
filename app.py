@@ -103,12 +103,13 @@ def add_page_bookmarks(postid):
     Добавление в закладки по маршруту bookmarks/add/postid
     """
     posts = get_posts_all()
-
     for post in posts:
         if str(post["pk"]) == postid:
-            with open("./data/bookmarks.json", "a", encoding="utf-8") as file:
-                file.dump(list(post), file)
-                break
+            with open("./data/bookmarks.json", "w", encoding="utf-8") as file:
+                bookmarks = json.load(file)
+                bookmarks.append(post)
+                json.dump(bookmarks, file)
+            break
 
     return redirect("/")
 
@@ -128,8 +129,12 @@ def get_bookmarks():
     """
     Вывод всех постов из избранного списка
     """
+    posts = []
     with open("./data/bookmarks.json", encoding="utf-8") as file:
+
         posts = json.load(file)
+
+
     if len(posts) == 0:
         return render_template("bookmarks_empty.html")
     else:
