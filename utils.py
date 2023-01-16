@@ -106,18 +106,24 @@ def get_post_by_pk(pk):
     else:
         return "Пост не найден!"
 
+# 6
+def get_link_by_tag(tag):
+    """
+    Получает ссылку из тега
+    """
+    return f"<a href='/tag/{tag}'>#{tag}</a>"
 
-def get_posts_by_tag(tag):
-    posts = get_posts_all()
-    posts_content = []
+# 7
+def get_tags(content):
+    """
+    Получает текст с ссылками из текста с хештегами
+    """
+    words = []
 
-    for post in posts:
-        if "#" in post["content"]:
-            words = post["content"].split(" ")
-            for word in words:
-                if word[0] == "#" and word[1:] == tag:
-                    posts_content.append(post)
+    for word in content.split(" "):
+        if word[0] == "#":
+            words.append(get_link_by_tag(word[1:]))
+        else:
+            words.append(word)
 
-            words = []
-
-    return posts_content
+    return " ".join(words)

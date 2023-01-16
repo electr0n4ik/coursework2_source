@@ -36,7 +36,7 @@
         <a href="/templates_app/post.html/post.html" class="item__post-link">
           <img src={{ post.pic }} alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr"><a href="/tag/{{ tagname }}" class="item__tag">#{{ tagname }}</a>{{ post.content|safe }}</p>
+        <p class="item__descr"><a href="/tag/{{ tagname }}" class="item__tag">#{{ tagname }}</a>{{ content|safe }}</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">

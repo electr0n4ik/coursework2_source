@@ -1,6 +1,7 @@
 # main page show
-from utils import get_posts_all, get_posts_by_tag
+from utils import get_posts_all
 from flask import Blueprint, render_template
+import json
 
 # Создаем блюпринт главной страницы
 # Должно показываться столько постов, сколько есть
@@ -14,4 +15,7 @@ def main_page():
     """
     Обработка запроса при обращении к /
     """
-    return render_template("index.html", posts=get_posts_all())
+    with open("./data/bookmarks.json", encoding="utf-8") as file:
+        amount_bookmarks = len(json.load(file))
+
+    return render_template("index.html", posts=get_posts_all(), amount_bookmarks=amount_bookmarks)

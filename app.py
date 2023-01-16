@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect
 from utils import *
 import logging
+import json
 
 # Импортируем блюпринты из их пакетов
 from main.main_page import main_blueprint
@@ -50,36 +51,90 @@ def user_page(username):
 
 @app.errorhandler(404)
 def error_404(error):
+    """
+    Представление для ошибки "Страница не найдена"
+    """
     return render_template("404.html"), 404
 
 
 @app.errorhandler(500)
 def internal_server_error(error):
+    """
+    Представление для ошибки "Внутренняя ошибка сервера"
+    """
     return render_template("500.html"), 500
 
 
 @app.route("/api/posts")
 def posts_in_json():
+    """
+    Представление для получения JSON-файла с постами
+    """
     logging.info("Запрос /api/posts")
     return jsonify(get_posts_all())
 
 
 @app.route("/api/posts/<post_id>")
 def one_post_in_json(post_id):
+    """
+    Представление для получения JSON-файла с постом
+    """
     logging.info(f"Запрос /api/posts/{post_id}")
     return jsonify(get_post_by_pk(post_id))
 
 
 @app.route("/tag/<tagname>")
 def tags_page(tagname):
-    posts = get_posts_by_tag(tagname) # все посты с тегом tagname
+    """
+    Вывод постов по тегу GET /tag/<tagname>
+    """
+    posts = get_posts_all()
+    posts_to_page = []
+    for post in posts:
+        if "#" + tagname in post["content"]:
+            posts_to_page.append(post)
+            content = get_tags(post["content"])
 
-    # for post in posts:
-    #     if tagname == word:
+    return render_template("tag.html", tagname=tagname, posts=posts_to_page, content=content)
 
-    #return f"tagname={tagname} posts= {posts}"
-    return render_template("tag.html", tagname=tagname, posts=posts)
+@app.route("/bookmarks/add/<postid>")
+def add_page_bookmarks(postid):
+    """
+    Добавление в закладки по маршруту bookmarks/add/postid
+    """
+    posts = get_posts_all()
+
+    for post in posts:
+        if str(post["pk"]) == postid:
+            with open("./data/bookmarks.json", "a", encoding="utf-8") as file:
+                file.dump(list(post), file)
+                break
+
+    return redirect("/")
+
+
+@app.route("/bookmarks/remove/<postid>")
+def remove_page_bookmarks(postid):
+    """
+    Удаление из закладок по маршруту bookmarks/remove/postid
+    """
+    with open("./data/bookmarks.json", encoding="utf-8") as file:
+        posts = file.read()
+    return posts
+
+
+@app.route("/bookmarks")
+def get_bookmarks():
+    """
+    Вывод всех постов из избранного списка
+    """
+    with open("./data/bookmarks.json", encoding="utf-8") as file:
+        posts = json.load(file)
+    if len(posts) == 0:
+        return render_template("bookmarks_empty.html")
+    else:
+        return render_template("bookmarks.html", posts=posts)
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
